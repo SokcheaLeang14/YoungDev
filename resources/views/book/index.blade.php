@@ -77,7 +77,7 @@
 								<th>Author</th>
 								<th>Status</th>
 								<th>Quantity</th>
-								<th>Location</th>]
+								<th>Location</th>
 								<th>Image</th>
 								<th>Actions</th>
 							</tr>

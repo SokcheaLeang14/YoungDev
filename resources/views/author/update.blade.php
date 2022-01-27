@@ -32,7 +32,7 @@
                         <input type="text" value="{{ $author->age }}" name="age" class="form-control" placeholder="Enter Title" />
                     </div>
                     <div class="form-group">
-                        <label for="exampleSelect1">Category
+                        <label for="exampleSelect1">Gender
                         <span class="text-danger">*</span></label>
                         <select class="form-control" name="gender" id="exampleSelect1">
                             <option value="male" <?php if($author->gender == 'male') {echo"checked"; }?>>Male</option>

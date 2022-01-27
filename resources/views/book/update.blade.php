@@ -21,6 +21,14 @@
             <form action="{{ url('update_book/'.$book->id) }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="card-body">
+                    <div class="form-group">
+                        <div class="pt-4 text-center">
+                            <img class="img-responsive border rounded p-3" src="{{ url('images/'.$book->image) }}" width="150px" alt="">
+                        </div>
+                        <div class="pt-4 text-center">
+                            <h2>{{ $book->title }}</h2>
+                        </div>
+                    </div>
                     <div class="form-group row">
                         <div class="col-lg-6">
                             <label>ISBN<span class="text-danger">*</span></label>
@@ -91,9 +99,6 @@
                             <div class="custom-file">
                                 <input type="file" class="custom-file-input" name="image" id="customFile">
                                 <label class="custom-file-label" for="customFile">Choose file</label>
-                            </div>
-                            <div>
-                                <img src="{{ url('images/'.$book->image) }}" width="150px" alt="">
                             </div>
                         </div>
                         
