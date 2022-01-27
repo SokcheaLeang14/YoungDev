@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\AuthenticateController;
+use App\Http\Controllers\UsersController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,9 +15,25 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+
+
 Route::get('/', function () {
     return view('index');
 });
 Route::get('/student',function(){
     return view('student.index');
+});
+
+// Unauthenticated Users
+Route::get('/login', [AuthenticateController::class, 'login']);
+Route::post('/auth', [AuthenticateController::class, 'auth']);
+
+// Authenticated Users
+Route::middleware('auth')->group(function () {
+    Route::get('/users', [UsersController::class, 'index']);
+    Route::get('/users/create', [UsersController::class, 'create']);
+    Route::post('/users/create', [UsersController::class, 'store']);
+    Route::get('/users/edit/{id}', [UsersController::class, 'edit']);
+    Route::post('/users/update/{id}', [UsersController::class, 'update']);
+    Route::get('/users/destroy/{id}', [UsersController::class, 'destroy']);
 });

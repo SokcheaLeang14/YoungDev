@@ -22,6 +22,7 @@ License: You must have a valid license purchased only from themeforest(the above
 		<!--begin::Fonts-->
 		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" />
 		<!--end::Fonts-->
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">	
 		<!--begin::Page Vendors Styles(used by this page)-->
 		<link href="{{ url('assets/plugins/custom/datatables/datatables.bundle.css') }}" rel="stylesheet" type="text/css" />
 		<!--end::Page Vendors Styles-->
