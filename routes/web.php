@@ -3,7 +3,9 @@
 use App\Http\Controllers\AuthenticateController;
 use App\Http\Controllers\UsersController;
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\BooksController;
+use App\Http\Controllers\AuthorController;
+use App\Http\Controllers\CategoryController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes

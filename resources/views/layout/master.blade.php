@@ -297,6 +297,7 @@ License: You must have a valid license purchased only from themeforest(the above
 		<!--begin::Page Scripts(used by this page)-->
 		<script src="{{ url('assets/js/pages/crud/datatables/basic/headers.js') }}"></script>
 		<!--end::Page Scripts-->
+		@yield('script')
 	</body>
 	<!--end::Body-->
 </html>
