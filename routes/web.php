@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BooksController;
 use App\Http\Controllers\AuthorController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\FrontendController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -64,3 +65,5 @@ Route::middleware('auth')->group(function () {
     Route::get('/delete_category/{id}',[CategroyController::class,'destroy']);
 });
 
+//Frontend
+    Route::get('/home',[FrontendController::class,'index']);
