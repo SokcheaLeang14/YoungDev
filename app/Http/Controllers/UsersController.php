@@ -84,6 +84,7 @@ class UsersController extends Controller
             'admin' => 'required',
             'status' => 'required'
         ]);
+
         if($dataIsValid['password'] == $dataIsValid['confirm']){
 
             $imageName = $request->file('image')->getClientOriginalName();
@@ -114,8 +115,7 @@ class UsersController extends Controller
     // delete user
     public function destroy($id)
     {
-        User::where('id', $id)
-            ->delete();
+        User::where('id', $id)->delete();
 
         return redirect('/users')
                 ->with('message', 'User has been deleted!!');
