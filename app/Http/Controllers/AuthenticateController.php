@@ -12,10 +12,9 @@ class AuthenticateController extends Controller
         return view('users.login');
 
     }
-    // 
+    // check login request
     public function auth(Request $request){
 
-        
         $credentials = $request->only('username', 'password');
 
         if(Auth::attempt($credentials)){
@@ -28,6 +27,17 @@ class AuthenticateController extends Controller
                     ->withInput()
                     ->withErrors('Either your password nor username is incorrectt!!');
         }
+    }
 
+    // logout
+    public function logout(Request $request){
+
+        Auth::logout();
+        
+        $request->session()->invalidate();
+
+        $request->session()->regenerateToken();
+    
+        return redirect('/login');
     }
 }

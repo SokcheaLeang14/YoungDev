@@ -23,6 +23,7 @@ use App\Http\Controllers\FrontendController;
 Route::get('/', function () {
     return view('index');
 });
+
 Route::get('/student',function(){
     return view('student.index');
 });
@@ -39,6 +40,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/users/edit/{id}', [UsersController::class, 'edit']);
     Route::post('/users/update/{id}', [UsersController::class, 'update']);
     Route::get('/users/destroy/{id}', [UsersController::class, 'destroy']);
+    Route::get('/logout', [AuthenticateController::class, 'logout']);
 
     //Book
     Route::get('/book',[BooksController::class,'index']);
@@ -62,8 +64,17 @@ Route::middleware('auth')->group(function () {
     Route::post('/create_category',[CategoryController::class,'store']);
     Route::get('/edit_category/{id}',[CategoryController::class,'edit']);
     Route::post('/update_category/{id}',[CategoryController::class,'update']);
-    Route::get('/delete_category/{id}',[CategroyController::class,'destroy']);
+    Route::get('/delete_category/{id}',[CategoryController::class,'destroy']);
 });
 
 //Frontend
-    Route::get('/home',[FrontendController::class,'index']);
+Route::get('/home',[FrontendController::class,'index']);
+// student login
+Route::get('/student/login',[FrontendController::class,'login']);
+Route::post('/student/auth', [FrontendController::class, 'auth']);
+
+Route::middleware('auth')->group(function() {
+    // Authenticated Users
+    Route::get('/student/create',[FrontendController::class,'create']);
+    Route::post('/student/create/store',[FrontendController::class,'store']);
+});

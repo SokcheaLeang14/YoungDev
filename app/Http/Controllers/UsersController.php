@@ -60,7 +60,7 @@ class UsersController extends Controller
             User::create($data);
             return redirect('/users');
         }
-        return redirect('/users/create');
+        return redirect('/users/create')->withInput();
     }
     
     // edit user
