@@ -26,21 +26,24 @@ License: You must have a valid license purchased only from themeforest(the above
     <!--end::Fonts-->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
     <!--begin::Page Vendors Styles(used by this page)-->
-    <link href="{{ url('assets/plugins/custom/datatables/datatables.bundle.css') }}" rel="stylesheet"
+    <link href="{{ secure_asset('assets/plugins/custom/datatables/datatables.bundle.css') }}" rel="stylesheet"
         type="text/css" />
     <!--end::Page Vendors Styles-->
     <!--begin::Global Theme Styles(used by all pages)-->
-    <link href="{{ url('assets/plugins/global/plugins.bundle.css') }}" rel="stylesheet" type="text/css" />
-    <link href="{{ url('assets/plugins/custom/prismjs/prismjs.bundle.css') }}" rel="stylesheet" type="text/css" />
-    <link href="{{ url('assets/css/style.bundle.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ secure_asset('assets/plugins/global/plugins.bundle.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ secure_asset('assets/plugins/custom/prismjs/prismjs.bundle.css') }}" rel="stylesheet"
+        type="text/css" />
+    <link href="{{ secure_asset('assets/css/style.bundle.css') }}" rel="stylesheet" type="text/css" />
     <!--end::Global Theme Styles-->
     <!--begin::Layout Themes(used by all pages)-->
-    <link href="{{ url('assets/css/themes/layout/header/base/light.css') }}" rel="stylesheet" type="text/css" />
-    <link href="{{ url('assets/css/themes/layout/header/menu/light.css') }}" rel="stylesheet" type="text/css" />
-    <link href="{{ url('assets/css/themes/layout/brand/dark.css') }}" rel="stylesheet" type="text/css" />
-    <link href="{{ url('assets/css/themes/layout/aside/dark.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ secure_asset('assets/css/themes/layout/header/base/light.css') }}" rel="stylesheet"
+        type="text/css" />
+    <link href="{{ secure_asset('assets/css/themes/layout/header/menu/light.css') }}" rel="stylesheet"
+        type="text/css" />
+    <link href="{{ secure_asset('assets/css/themes/layout/brand/dark.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ secure_asset('assets/css/themes/layout/aside/dark.css') }}" rel="stylesheet" type="text/css" />
     <!--end::Layout Themes-->
-    <link rel="shortcut icon" href="{{ url('assets/media/logos/favicon.ico') }}" />
+    <link rel="shortcut icon" href="{{ secure_asset('assets/media/logos/favicon.ico') }}" />
 </head>
 <!--end::Head-->
 <!--begin::Body-->
@@ -340,15 +343,15 @@ License: You must have a valid license purchased only from themeforest(the above
     </script>
     <!--end::Global Config-->
     <!--begin::Global Theme Bundle(used by all pages)-->
-    <script src="{{ url('assets/plugins/global/plugins.bundle.js') }}"></script>
-    <script src="{{ url('assets/plugins/custom/prismjs/prismjs.bundle.js') }}"></script>
-    <script src="{{ url('assets/js/scripts.bundle.js') }}"></script>
+    <script src="{{ secure_asset('assets/plugins/global/plugins.bundle.js') }}"></script>
+    <script src="{{ secure_asset('assets/plugins/custom/prismjs/prismjs.bundle.js') }}"></script>
+    <script src="{{ secure_asset('assets/js/scripts.bundle.js') }}"></script>
     <!--end::Global Theme Bundle-->
     <!--begin::Page Vendors(used by this page)-->
-    <script src="{{ url('assets/plugins/custom/datatables/datatables.bundle.js') }}"></script>
+    <script src="{{ secure_asset('assets/plugins/custom/datatables/datatables.bundle.js') }}"></script>
     <!--end::Page Vendors-->
     <!--begin::Page Scripts(used by this page)-->
-    <script src="{{ url('assets/js/pages/crud/datatables/basic/headers.js') }}"></script>
+    <script src="{{ secure_asset('assets/js/pages/crud/datatables/basic/headers.js') }}"></script>
     <!--end::Page Scripts-->
     @yield('script')
 </body>
