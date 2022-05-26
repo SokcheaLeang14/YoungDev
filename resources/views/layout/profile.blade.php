@@ -15,15 +15,14 @@
           <!--begin::Header-->
           <div class="d-flex align-items-center mt-5">
               <div class="symbol symbol-100 mr-5">
-                  <div class="symbol-label"
-                      style="background-image:url('{{ url('images/' . (Auth::user()->image ? Auth::user()->image : '')) }}');">
+                  <div class="symbol-label" style="background-image:url('{{ url('images/') }}');">
                   </div>
                   <i class="symbol-badge bg-success"></i>
               </div>
               <div class="d-flex flex-column">
                   <a href="#"
-                      class="font-weight-bold font-size-h5 text-dark-75 text-hover-primary">{{ Auth::user()->username ? Auth::user()->username : 'username' }}</a>
-                  <div class="text-muted mt-1">{{ Auth::user()->is_admin ? 'Admin' : '' }}</div>
+                      class="font-weight-bold font-size-h5 text-dark-75 text-hover-primary">{{ 'username' }}</a>
+                  <div class="text-muted mt-1">{{ 'Admin' }}</div>
                   <div class="navi mt-2">
                       <a href="#" class="navi-item">
                           <span class="navi-link p-0 pb-2">
@@ -43,8 +42,7 @@
                                       <!--end::Svg Icon-->
                                   </span>
                               </span>
-                              <span
-                                  class="navi-text text-muted text-hover-primary">{{ Auth::user()->email ? Auth::user()->email : 'johndoe@gmail.com' }}</span>
+                              <span class="navi-text text-muted text-hover-primary">{{ 'johndoe@gmail.com' }}</span>
                           </span>
                       </a>
                       <a href="#" class="btn btn-sm btn-light-primary font-weight-bolder py-2 px-5">Sign Out</a>
