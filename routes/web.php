@@ -6,7 +6,6 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BooksController;
 use App\Http\Controllers\AuthorController;
 use App\Http\Controllers\CategoryController;
-use App\Http\Controllers\FrontendController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -61,5 +60,5 @@ Route::middleware('auth')->group(function () {
     Route::post('/create_category', [CategoryController::class, 'store']);
     Route::get('/edit_category/{id}', [CategoryController::class, 'edit']);
     Route::post('/update_category/{id}', [CategoryController::class, 'update']);
-    Route::get('/delete_category/{id}', [CategroyController::class, 'destroy']);
+    Route::get('/delete_category/{id}', [CategoryController::class, 'destroy']);
 });
