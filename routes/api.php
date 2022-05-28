@@ -2,7 +2,6 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\api\StudentsController;
-use Illuminate\Http\Request;
 
 /*
 |--------------------------------------------------------------------------
