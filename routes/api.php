@@ -19,3 +19,7 @@ Route::post('/students/register', [StudentsController::class, 'register']);
 Route::middleware(['auth:sanctum'])->group(function () {
     Route::post('/students/login', [StudentsController::class, 'login']);
 });
+
+Route::get("/hey", function () {
+    return response()->json("Hey");
+});
