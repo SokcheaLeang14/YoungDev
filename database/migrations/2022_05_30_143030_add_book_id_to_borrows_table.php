@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddImageToBooksTable extends Migration
+class AddBookIdToBorrowsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,8 @@ class AddImageToBooksTable extends Migration
      */
     public function up()
     {
-        Schema::table('books', function (Blueprint $table) {
-            //
+        Schema::table('borrows', function (Blueprint $table) {
+            $table->string('book_id')->nullable();
         });
     }
 
@@ -25,8 +25,8 @@ class AddImageToBooksTable extends Migration
      */
     public function down()
     {
-        Schema::table('books', function (Blueprint $table) {
-            //
+        Schema::table('borrows', function (Blueprint $table) {
+            $table->dropColumn('book_id');
         });
     }
 }

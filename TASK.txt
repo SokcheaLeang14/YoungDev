@@ -1,0 +1,10 @@
+_	Register
+_ 	Login
+_	Search book by ID, Author, 
+_	Borrow book
+		book: array
+		return date: date
+		description: string ? null
+		stu_id: int // foriegn key
+_	Filter book by category
+_	Add to Cart
