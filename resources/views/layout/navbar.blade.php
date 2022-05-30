@@ -6,7 +6,7 @@
         <!--begin::Menu Nav-->
         <ul class="menu-nav">
             <li class="menu-item" aria-haspopup="true">
-                <a href="{{ url('/') }}" class="menu-link">
+                <a href="{{ url('/home') }}" class="menu-link">
                     <span class="svg-icon menu-icon">
                         <!--begin::Svg Icon | path:assets/media/svg/icons/Design/Layers.svg-->
                         <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px"

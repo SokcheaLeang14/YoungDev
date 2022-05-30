@@ -59,7 +59,7 @@ License: You must have a valid license purchased only from themeforest(the above
                 <!--begin::Brand-->
                 <div class="brand flex-column-auto" id="kt_brand">
                     <!--begin::Logo-->
-                    <a href="{{ url('/') }}" class="brand-logo text-white font-weight-bold">
+                    <a href="{{ url('/home') }}" class="brand-logo text-white font-weight-bold">
                         The Cambo Bookstore
                     </a>
                     <!--end::Logo-->

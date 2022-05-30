@@ -19,17 +19,17 @@ use App\Http\Controllers\CategoryController;
 
 
 
-Route::get('/', function () {
-    return view('index');
-});
 
 // Unauthenticated Users
-Route::get('/login', [AuthenticateController::class, 'login']);
+Route::get('/', [AuthenticateController::class, 'login']);
 Route::post('/auth', [AuthenticateController::class, 'auth']);
 
 // Authenticated Users
 Route::middleware('auth')->group(function () {
     // Authenticated Users
+    Route::get('/home', function () {
+        return view('index');
+    });
     Route::get('/users', [UsersController::class, 'index']);
     Route::get('/users/create', [UsersController::class, 'create']);
     Route::post('/users/create', [UsersController::class, 'store']);
