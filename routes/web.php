@@ -23,6 +23,8 @@ use App\Http\Controllers\CategoryController;
 // Unauthenticated Users
 Route::get('/', [AuthenticateController::class, 'login']);
 Route::post('/auth', [AuthenticateController::class, 'auth']);
+Route::get('/users/create', [UsersController::class, 'create']);
+Route::post('/users/create', [UsersController::class, 'store']);
 
 // Authenticated Users
 Route::middleware('auth')->group(function () {
@@ -31,8 +33,6 @@ Route::middleware('auth')->group(function () {
         return view('index');
     });
     Route::get('/users', [UsersController::class, 'index']);
-    Route::get('/users/create', [UsersController::class, 'create']);
-    Route::post('/users/create', [UsersController::class, 'store']);
     Route::get('/users/edit/{id}', [UsersController::class, 'edit']);
     Route::post('/users/update/{id}', [UsersController::class, 'update']);
     Route::get('/users/destroy/{id}', [UsersController::class, 'destroy']);

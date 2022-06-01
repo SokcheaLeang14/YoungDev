@@ -16,16 +16,16 @@
           <div class="d-flex align-items-center mt-5">
               <div class="symbol symbol-100 mr-5">
                   <div class="symbol-label"
-                      style="background-image:url('{{ url('images/' . Auth::user()->image) }}');">
+                      style="background-image:url('{{ url('images/'. Auth::user()-> image) }}');">
                   </div>
                   <i class="symbol-badge bg-success"></i>
               </div>
               <div class="d-flex flex-column">
                   <a href="#"
                       class="font-weight-bold font-size-h5 text-dark-75 text-hover-primary">{{ Auth::user()->username }}</a>
-                  <div class="text-muted mt-1">{{ Auth::user()->is_admin == 1 ? 'Admin' : 'User' }}</div>
-                  <div class="mt-1 <?php Auth::user()->status ? 'text-dark' : 'text-danger'; ?>">
-                      {{ Auth::user()->status == 1 ? 'Active' : 'Offline' }}</div>
+                  <div class="text-muted mt-1">{{ Auth::user()-> is_admin ? 'Admin' : 'Non-Admin' }}</div>
+                  <div class="mt-1">
+                      {{ Auth::user()-> status ? 'Active' : 'Offlie' }}</div>
                   <div class="navi mt-2">
                       <a href="#" class="navi-item">
                           <span class="navi-link p-0 pb-2">

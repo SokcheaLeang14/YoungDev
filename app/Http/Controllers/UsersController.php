@@ -59,7 +59,7 @@ class UsersController extends Controller
 			];
 
 			User::create($data);
-			return redirect('/users');
+			return redirect('/');
 		}
 		return redirect('/users/create')->withInput();
 	}
