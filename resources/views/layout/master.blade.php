@@ -202,11 +202,11 @@ License: You must have a valid license purchased only from themeforest(the above
                                     <span
                                         class="text-muted font-weight-bold font-size-base d-none d-md-inline mr-1">Hi,</span>
                                     <span
-                                        class="text-dark-50 font-weight-bolder font-size-base d-none d-md-inline mr-3">{{ 'er()->uAuth::ussername' }}</span>
+                                        class="text-dark-50 font-weight-bolder font-size-base d-none d-md-inline mr-3">{{ Auth::user()->username }}</span>
                                     <span class="symbol symbol-lg-35 symbol-25 symbol-light-success">
                                         <span class="symbol-label font-size-h5 font-weight-bold">
                                             <div class="symbol-label"
-                                                style="background-image:url('{{ url('images/') }}');">
+                                                style="background-image:url('{{ url('images/' . Auth::user()->image) }}');">
                                             </div>
                                         </span>
                                     </span>
