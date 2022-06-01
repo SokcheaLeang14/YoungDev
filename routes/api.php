@@ -18,11 +18,18 @@ use App\Http\Controllers\api\StudentsController;
 Route::post('/students/register', [StudentsController::class, 'register']);
 
 Route::middleware(['auth:sanctum'])->group(function () {
+    
+    /**
+     * @ Students
+     */
     Route::post('/students/login', [StudentsController::class, 'login']);
     Route::post('/students/{id}', [StudentsController::class, 'getStudentInfo']);
     Route::post('/students/update/{id}', [StudentsController::class, 'update']);
     Route::post('/students/delete/{id}', [StudentsController::class, 'delete']);
-
+    
+    /**
+     * @ Book 
+     */
     Route::post('/books', [BooksController::class, 'getAllBooks']);
     Route::post('/books/detail/{id}', [BooksController::class, 'viewBookDetail']);
     Route::post('/books/search', [BooksController::class, 'searchBook']);

@@ -8,116 +8,115 @@ use Illuminate\Support\Facades\Hash;
 
 class UsersController extends Controller
 {
-    // public function __construct(){
+	public function __construct()
+	{
+		$this->middleware('auth');
+	}
 
-    //     $this->middleware('auth');
+	// get all users 
+	public function index()
+	{
+		$users = User::all();
 
-    // }
+		return view('users.index', ['users' => $users]);
+	}
 
-    // get all users 
-    public function index()
-    {
-        $users = User::all();
+	// redirect to create
+	public function create()
+	{
+		return view('users.create');
+	}
 
-        return view('users.index', ['users' => $users]);
-    }
+	public function store(Request $request)
+	{
 
-    // redirect to create
-    public function create()
-    {
-        return view('users.create');
-    }
+		$dataIsValid = $request->validate([
+			'username' => 'required|string|max:255',
+			'email' => 'required',
+			'password' => 'required|min:4|max:20',
+			'confirm' => 'required|min:4|max:20',
+			'telephone' => 'required',
+			'image' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048',
+			'admin' => 'required',
+			'status' => 'required'
+		]);
 
-    public function store(Request $request)
-    {
+		// check if the user confirm the correct password
+		if ($dataIsValid['password'] == $dataIsValid['confirm']) {
 
-        $dataIsValid = $request->validate([
-            'username' => 'required|string|max:255',
-            'email' => 'required',
-            'password' => 'required|min:4|max:20',
-            'confirm' => 'required|min:4|max:20',
-            'telephone' => 'required',
-            'image' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048',
-            'admin' => 'required',
-            'status' => 'required'
-        ]);
+			// store image in public/images dir
+			$imageName = $request->file('image')->getClientOriginalName();
+			$request->image->move(public_path('images'), $imageName);
 
-        // check if the user confirm the correct password
-        if ($dataIsValid['password'] == $dataIsValid['confirm']) {
+			$data = [
+				'username' => $dataIsValid['username'],
+				'email' => $dataIsValid['email'],
+				'password' => Hash::make($dataIsValid['password']),
+				'telephone' => $dataIsValid['telephone'],
+				'image' => $imageName,
+				'is_admin' => $dataIsValid['admin'],
+				'status' => $dataIsValid['status']
+			];
 
-            // store image in public/images dir
-            $imageName = $request->file('image')->getClientOriginalName();
-            $request->image->move(public_path('images'), $imageName);
+			User::create($data);
+			return redirect('/users');
+		}
+		return redirect('/users/create')->withInput();
+	}
 
-            $data = [
-                'username' => $dataIsValid['username'],
-                'email' => $dataIsValid['email'],
-                'password' => Hash::make($dataIsValid['password']),
-                'telephone' => $dataIsValid['telephone'],
-                'image' => $imageName,
-                'is_admin' => $dataIsValid['admin'],
-                'status' => $dataIsValid['status']
-            ];
+	// edit user
+	public function edit($id)
+	{
+		$data = User::find($id);
 
-            User::create($data);
-            return redirect('/users');
-        }
-        return redirect('/users/create')->withInput();
-    }
+		return view('users.update', ['users' => $data]);
+	}
 
-    // edit user
-    public function edit($id)
-    {
-        $data = User::find($id);
+	// update user
+	public function update(Request $request, $id)
+	{
+		$dataIsValid = $request->validate([
+			'username' => 'required|string|max:255',
+			'email' => 'required',
+			'password' => 'required|min:4|max:20',
+			'confirm' => 'required',
+			'telephone' => 'required',
+			'image' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048',
+			'admin' => 'required',
+			'status' => 'required'
+		]);
+		if ($dataIsValid['password'] == $dataIsValid['confirm']) {
 
-        return view('users.update', ['users' => $data]);
-    }
+			$imageName = $request->file('image')->getClientOriginalName();
+			$request->image->move(public_path('images'), $imageName);
 
-    // update user
-    public function update(Request $request, $id)
-    {
-        $dataIsValid = $request->validate([
-            'username' => 'required|string|max:255',
-            'email' => 'required',
-            'password' => 'required|min:4|max:20',
-            'confirm' => 'required',
-            'telephone' => 'required',
-            'image' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048',
-            'admin' => 'required',
-            'status' => 'required'
-        ]);
-        if ($dataIsValid['password'] == $dataIsValid['confirm']) {
+			$data = [
+				'username' => $dataIsValid['username'],
+				'email' => $dataIsValid['email'],
+				'password' => Hash::make($dataIsValid['password'], [round(10)]),
+				'telephone' => $dataIsValid['telephone'],
+				'image' => $imageName,
+				'is_admin' => $dataIsValid['admin'],
+				'status' => $dataIsValid['status']
+			];
 
-            $imageName = $request->file('image')->getClientOriginalName();
-            $request->image->move(public_path('images'), $imageName);
+			User::find($id)->update($data);
 
-            $data = [
-                'username' => $dataIsValid['username'],
-                'email' => $dataIsValid['email'],
-                'password' => Hash::make($dataIsValid['password'], [round(10)]),
-                'telephone' => $dataIsValid['telephone'],
-                'image' => $imageName,
-                'is_admin' => $dataIsValid['admin'],
-                'status' => $dataIsValid['status']
-            ];
+			return redirect('/users')
+				->with('message', 'User is updated!!');
+		} else {
+			return back()
+				->with('status', 'Password does not match')
+				->withInput();
+		}
+	}
 
-            User::find($id)->update($data);
+	// delete user
+	public function destroy($id)
+	{
+		User::where('id', $id)->delete();
 
-            return redirect('/users')
-                ->with('message', 'User is updated!!');
-        } else {
-            return back()
-                ->with('status', 'Password does not match')
-                ->withInput();
-        }
-    }
-
-    // delete user
-    public function destroy($id)
-    {
-        User::where('id', $id)->delete();
-
-        return redirect('/users')
-            ->with('message', 'User has been deleted!!');
-    }
+		return redirect('/users')
+			->with('message', 'User has been deleted!!');
+	}
 }

@@ -7,37 +7,37 @@ use Illuminate\Support\Facades\Auth;
 
 class AuthenticateController extends Controller
 {
-    public function login()
-    {
-        return view('users.login');
+  public function login()
+  {
+    return view('users.login');
+  }
+  // check login request
+  public function auth(Request $request)
+  {
+
+    $credentials = $request->only('username', 'password');
+
+    if (Auth::attempt($credentials)) {
+      return redirect()
+        ->intended('/home')
+        ->withSuccess('You have successfully logged in!!');
+    } else {
+      return redirect('/')
+        ->withInput()
+        ->withErrors('Either your password nor username is incorrectt!!');
     }
-    // check login request
-    public function auth(Request $request)
-    {
+  }
 
-        $credentials = $request->only('username', 'password');
+  // logout
+  public function logout(Request $request)
+  {
 
-        if (Auth::attempt($credentials)) {
-            return redirect()
-                ->intended('/home')
-                ->withSuccess('You have successfully logged in!!');
-        } else {
-            return redirect('/')
-                ->withInput()
-                ->withErrors('Either your password nor username is incorrectt!!');
-        }
-    }
+    Auth::logout();
 
-    // logout
-    public function logout(Request $request)
-    {
+    $request->session()->invalidate();
 
-        Auth::logout();
+    $request->session()->regenerateToken();
 
-        $request->session()->invalidate();
-
-        $request->session()->regenerateToken();
-
-        return redirect('/login');
-    }
+    return redirect('/login');
+  }
 }
