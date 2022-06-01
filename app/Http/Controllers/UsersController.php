@@ -8,10 +8,10 @@ use Illuminate\Support\Facades\Hash;
 
 class UsersController extends Controller
 {
-	public function __construct()
-	{
-		$this->middleware('auth');
-	}
+	// public function __construct()
+	// {
+	// 	$this->middleware('auth');
+	// }
 
 	// get all users 
 	public function index()
