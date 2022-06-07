@@ -14,7 +14,7 @@ class AddBookIdToBorrowsTable extends Migration
     public function up()
     {
         Schema::table('borrows', function (Blueprint $table) {
-            $table->string('book_id')->constrained('books');
+            $table->foreignId('book_id')->constrained('books');
         });
     }
 
