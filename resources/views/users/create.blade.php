@@ -1,17 +1,5 @@
-{{-- @extends('layout.master')
-@section('content') --}}
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-
-<body>
-
+@extends('layout.master')
+@section('content')
     <div class="d-flex flex-column-fluid">
         <!--begin::Container-->
         <div class="container">
@@ -57,9 +45,9 @@
                         <div class="form-group">
                             <label for="exampleInputPassword1">Password
                                 <span class="text-danger">*</span></label>
-                            <input type="password" class="form-control" id="exampleInputPassword1"
-                                placeholder="Password" name="password" required value="{{ old('password') }}"
-                                autofocus autocomplete="current-password" />
+                            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password"
+                                name="password" required value="{{ old('password') }}" autofocus
+                                autocomplete="current-password" />
                         </div>
                         <div class="form-group">
                             <label for="exampleInputPassword1">Confirm Password
@@ -108,7 +96,4 @@
         </div>
         <!--end::Container-->
     </div>
-</body>
-
-</html>
-{{-- @endsection --}}
+@endsection
