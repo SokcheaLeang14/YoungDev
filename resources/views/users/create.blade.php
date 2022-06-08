@@ -56,14 +56,9 @@
                         <div class="form-group">
                             <label for="exampleInputPassword1">Password
                                 <span class="text-danger">*</span></label>
-                            <<<<<<< HEAD <input type="password" class="form-control" id="exampleInputPassword1"
-                                placeholder="Password" name="password" required value="{{ old('password') }}"
-                                autofocus autocomplete="current-password" />
-                            =======
                             <input type="password" class="form-control" id="exampleInputPassword1"
                                 placeholder="Password" name="password" required value="{{ old('password') }}"
                                 autofocus autocomplete="current-password" />
-                            >>>>>>> api
                         </div>
                         <div class="form-group">
                             <label for="exampleInputPassword1">Confirm Password
