@@ -112,8 +112,7 @@
         </div>
         <!--end::Container-->
     </div>
-<<<<<<< HEAD @endsection=======</body>
+</body>
 
 </html>
 {{-- @endsection --}}
->>>>>>> api
