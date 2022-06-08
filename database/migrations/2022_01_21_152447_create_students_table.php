@@ -18,10 +18,10 @@ class CreateStudentsTable extends Migration
             $table->string('username');
             $table->string('email');
             $table->string('password');
-            $table->string('department');
+            $table->string('department')->nullable();
             $table->string('image')->nullable();
             $table->string('telephone')->nullable();
-            $table->smallInteger('status');
+            $table->smallInteger('status')->nullable();
             $table->timestamps();
         });
     }
