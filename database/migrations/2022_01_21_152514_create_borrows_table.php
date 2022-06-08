@@ -16,6 +16,7 @@ class CreateBorrowsTable extends Migration
         Schema::create('borrows', function (Blueprint $table) {
             $table->id()->autoIncrement();
             $table->foreignId('stu_id')->constrained('students');
+            $table->foreignId('book_id')->constrained('books');
             $table->longText('description');
             $table->smallInteger('approval');
             $table->dateTime('borrow_date');
