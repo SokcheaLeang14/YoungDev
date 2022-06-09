@@ -15,6 +15,7 @@ use App\Http\Controllers\api\StudentsController;
 |
 */
 
+
 Route::post('/students/register', [StudentsController::class, 'register']);
 
 Route::middleware(['auth:sanctum'])->group(function () {
