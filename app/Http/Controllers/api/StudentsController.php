@@ -44,7 +44,8 @@ class StudentsController extends Controller
 	{
 		$stu = Students::where('email', $request->input('email'))->first();
 		$isCorrect = Hash::check($request->input('password'), $stu['password']);
-		return response()->json([$stu, $isCorrect], 201);
+		$token = $stu->createToken('token')->plainTextToken;
+		return response()->json([$stu, $isCorrect, $token], 201);
 	}
 
 	public function getStudentInfo($id)
