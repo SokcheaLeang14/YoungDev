@@ -59,7 +59,7 @@ class StudentsController extends Controller
 			return response()->json([
 				'message' => "The credentials you provided is not correct!",
 				'status' => 0
-			]);
+			],200);
 		} 
 	}
 
