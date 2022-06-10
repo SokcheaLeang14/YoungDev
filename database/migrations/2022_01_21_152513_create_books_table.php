@@ -17,8 +17,8 @@ class CreateBooksTable extends Migration
             $table->id()->autoIncrement();
             $table->string('isbn');
             $table->string('title');
-            $table->foreignId('author_id')->constrained('authors');
-            $table->foreignId('category_id')->constrained('categories');
+            $table->foreignId('author_id')->constrained('authors')->cascadeOnDelete()->cascadeOnUpdate();
+            $table->foreignId('category_id')->constrained('categories')->cascadeOnDelete()->cascadeOnUpdate();
             $table->longText('description')->nullable();
             $table->smallInteger('status');
             $table->dateTime('release_date');

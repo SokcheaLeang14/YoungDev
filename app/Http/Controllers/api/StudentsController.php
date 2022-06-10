@@ -11,31 +11,33 @@ class StudentsController extends Controller
 {
 	public function register(Request $request)
 	{
-		$validated = $request->validate([
+		$request->validate([
 			'username' => 'required|string',
-			'email' => 'required|string',
-			'password' => 'required|string',
+			'email' => 'required|string|unique:users,email|email',
+			'password' => 'required|string|min:6|max:20',
 		]);
 
-		$image = null;
+		if ($request->file('image')) {
+			$imageName = time() . $request->file('image')->getClientOriginalName();
+			$request->image->move(public_path('images'), $imageName);
+		} else {
+			$imageName = '';
+		}
 
 		$data = Students::create([
-			'username' => $validated['username'],
-			'email' => $validated['email'],
-			'password' => Hash::make($validated['password']),
+			'username' => $request->input('username'),
+			'email' => $request->input('email'),
+			'password' => Hash::make($request->input('password'), [round('10')]),
 			'department' => $request->input('department'),
-			'image' => $image,
+			'image' => $imageName,
 			'telephone' => $request->input('telephone'),
 			'status' => $request->input('status')
 		]);
-
-		$token = $data->createToken('token')->plainTextToken;
 
 		$res = [
 			'data' => $data,
 			'message' => "User created successfully",
 			'status' => 1,
-			'token' => $token
 		];
 		return response()->json($res, 200);
 	}

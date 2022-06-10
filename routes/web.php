@@ -17,9 +17,6 @@ use App\Http\Controllers\CategoryController;
 |
 */
 
-
-
-
 // Unauthenticated Users
 Route::get('/', [AuthenticateController::class, 'login']);
 Route::post('/auth', [AuthenticateController::class, 'auth']);
