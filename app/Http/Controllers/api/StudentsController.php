@@ -46,7 +46,7 @@ class StudentsController extends Controller
 	{
 		$validate = $request->validate([
 			'email' => 'required|string|email',
-			'password' => 'required|string|min:6|max:6'
+			'password' => 'required|string|min:6|max:20'
 		]);
 
 		$stu = Students::where('email', $validate['email'])->first();
