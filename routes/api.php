@@ -1,8 +1,10 @@
 <?php
 
+use App\Http\Controllers\api\AuthorController;
 use App\Http\Controllers\api\BooksController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\api\StudentsController;
+use App\Http\Controllers\api\CategoriesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,4 +34,13 @@ Route::middleware(['auth:sanctum'])->group(function () {
     Route::post('/books', [BooksController::class, 'getAllBooks']);
     Route::post('/books/detail/{id}', [BooksController::class, 'viewBookDetail']);
     Route::post('/books/search', [BooksController::class, 'searchBook']);
+    /**
+     * @ Author
+     */
+    Route::post('/authors', [AuthorController::class, 'index']);
+    Route::post('/author/{id}', [AuthorController::class, 'show']);
+    /**
+     * @ Category
+     */
+    Route::post('/categories', [CategoriesController::class, 'index']);
 });

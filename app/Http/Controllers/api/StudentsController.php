@@ -55,16 +55,16 @@ class StudentsController extends Controller
 		if ($isCorrect) {
 			$token = $stu->createToken('token')->plainTextToken;
 			return response()->json([
-				'data' => $stu, 
-				'status' => 1, 
+				'data' => $stu,
+				'status' => 1,
 				'token' => $token
 			], 201);
 		} else {
 			return response()->json([
 				'message' => "The credentials you provided is not correct!",
 				'status' => 0
-			],200);
-		} 
+			], 200);
+		}
 	}
 
 	public function getStudentInfo($id)
