@@ -18,9 +18,10 @@ class BooksResource extends JsonResource
             'id' => $this->id,
             'isbn' => $this->isbn,
             'title' => $this->title,
-            'author' => AuthorResource::make($this-> authors),
-            'category' => CategoriesResource::make($this-> categories),
+            'author' => AuthorResource::make($this->authors),
+            'category' => CategoriesResource::make($this->categories),
             'description' => $this->description,
+            'image' => 'images/' . $this->image,
             'status' => $this->status,
             'release_date' => $this->release_date,
             'location' => $this->location
